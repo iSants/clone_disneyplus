@@ -1,6 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
   const buttons = document.querySelectorAll('[data-tab-button]');
   const tabs = document.querySelectorAll('[data-tab-id]');
+  const questions = document.querySelectorAll('[data-faq-question]');
+
+  // Adiciona listeners em cada pergunta
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].addEventListener('click', abreOuFechaResposta);
+  }
+
+  // Função que abre ou fecha a resposta
+  function abreOuFechaResposta(elemento) {
+    const classe = 'faq__questions__item--is-open';
+    const elementoPai = elemento.target.parentNode;
+
+    elementoPai.classList.toggle(classe);
+  }
 
   // Função que oculta todas as tabs
   function hideAllTabs() {
