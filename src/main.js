@@ -2,6 +2,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const buttons = document.querySelectorAll('[data-tab-button]');
   const tabs = document.querySelectorAll('[data-tab-id]');
   const questions = document.querySelectorAll('[data-faq-question]');
+  const heroSection = document.querySelector('.hero');
+  const alturaHero = heroSection.clientHeight;
+
+  window.addEventListener('scroll', function () {
+    const postcaoAtual = window.scrollY;
+
+    if (postcaoAtual < alturaHero) {
+      hiddenElementHeader();
+    } else {
+      ShowElementHeader();
+    }
+  });
+
+  // Função que oculta o header
+  function hiddenElementHeader(){
+    const header = document.querySelector('.header');
+    header.classList.add('header--is--hidden');
+  }
+
+  function ShowElementHeader(){
+    const header = document.querySelector('.header');
+    header.classList.remove('header--is--hidden');
+  }
 
   // Adiciona listeners em cada pergunta
   for (let i = 0; i < questions.length; i++) {
